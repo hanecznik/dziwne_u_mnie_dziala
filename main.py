@@ -1,16 +1,24 @@
-# This is a sample Python script.
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+driver = webdriver.Chrome(ChromeDriverManager().install())
 
+driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+title = driver.title
+assert title == "Web form"
 
+driver.implicitly_wait(0.5)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+text_box = driver.find_element(by=By.NAME, value="my-text")
+submit_button = driver.find_element(by=By.CSS_SELECTOR, value="button")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+text_box.send_keys("Selenium")
+submit_button.click()
+
+message = driver.find_element(by=By.ID, value="message")
+value = message.text
+assert value == "Received!"
+
+driver.quit()
