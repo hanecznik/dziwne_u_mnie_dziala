@@ -1,8 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
+options = webdriver.ChromeOptions()
+options.add_experimental_option("detach", True)
+
 s = Service('C:/Users/grapefruit/Desktop/browserdrivers/chromedriver_mac64')
-driver = webdriver.Chrome(service=s)
+driver = webdriver.Chrome(service=s, options=options)
 driver.get("https://www.google.pl")
 
 # # driver = webdriver.Chrome (ChromeDriverManager().install())
