@@ -3,9 +3,6 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 
-def test_selenium_chromedriver():
-    driver = webdriver.Chrome(ChromeDriverManager().install())
-
     driver.get("https://www.selenium.dev/selenium/web/web-form.html")
 
     title = driver.title
