@@ -1,13 +1,13 @@
 from selenium import webdriver
+from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver import Chrome
-from selenium.webdriver.support.ui import WebDriverWait
+
+
 # from selenium.webdriver.support import expected_conditions as EC
 
-import time
+
 # import pytest
 
 # @pytest.fixture(scope='web')
@@ -17,10 +17,10 @@ import time
 #     driver.close()
 
 def test_demo_page():
-    service = Service(executable_path = './Users/grapefruit/Desktop/browserdrivers/chromedriver_mac64')
+    service = Service(executable_path='./Users/grapefruit/Desktop/browserdrivers/chromedriver_mac64')
     browser = webdriver.Chrome(service=service)
 
-  # driver = Chrome(executable_path=ChromeDriverManager().install())
+    driver = Chrome(ChromeDriverManager().install())
 
     browser.get('https://mdlr-shop.webflow.io/')
     browser.maximize_window()
@@ -47,7 +47,3 @@ def test_demo_page():
     Subscribe_email.send_keys('noname@noname.pl')
 
     Click_subsribe_button = browser.find_element(By.XPATH, '//input[@type="submit"]').click()
-
-
-
-
