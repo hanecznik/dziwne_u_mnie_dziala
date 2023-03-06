@@ -20,8 +20,6 @@ def test_demo_page():
     service = Service(executable_path='./Users/grapefruit/Desktop/browserdrivers/chromedriver_mac64')
     browser = webdriver.Chrome(service=service)
 
-    driver = Chrome(ChromeDriverManager().install())
-
     browser.get('https://mdlr-shop.webflow.io/')
     browser.maximize_window()
     browser.implicitly_wait(10)
