@@ -7,5 +7,5 @@ class MainPage(PageBase):
 
     def get_amount_of_points_by_club_name(self, name):
         selector = f"//td[text()='{name}']/parent::tr/td[@class='points']"
-        element = self.find_element(self, selector)
+        element = self.find_element(selector)
         return element

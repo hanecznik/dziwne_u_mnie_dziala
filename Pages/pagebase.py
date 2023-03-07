@@ -8,11 +8,11 @@ class PageBase:
         self.base_url = base_url
 
     def find_element(self, locator, timeout_sec=60):
-        return WebDriverWait(self, driver, timeout_sec).until(EC.presence_of_element_located(locator),
+        return WebDriverWait(self.driver, timeout_sec).until(EC.presence_of_element_located(locator),
                                                               message=f"Can't find element by locator {locator}")
 
     def find_elements(self, locator, timeout_sec):
-        return WebDriverWait(self, driver, timeout_sec).until(EC.presence_of_all_elements_located(locator),
+        return WebDriverWait(self.driver, timeout_sec).until(EC.presence_of_all_elements_located(locator),
                                                               message=f"Can't find element by locator {locator}")
 
     def click_on(self, locator, timeout_sec):
@@ -33,4 +33,4 @@ class PageBase:
         self.find_element(locator).send_keys(text)
 
     def wait_until_visibility_of_element_located(self, locator):
-        WebDriverWait(self, driver, timeout=5).until(EC.presence_of_element_located(locator))
+        WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located(locator))
