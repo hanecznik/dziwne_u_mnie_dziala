@@ -25,7 +25,7 @@ def test_check_amount_of_points_by_club_name(browser):
     selector = f"//td[contains(text(),'{name}')]/parent::tr/td[@class='points']"
     # points = browser.find_element(By.XPATH, selector).text
     # TODO:investigate base page methods
-    points = tvn_sport_page.get_amount_of_points_by_club_name((By.XPATH, 'Legia'))
+    points = tvn_sport_page.get_amount_of_points_by_club_name('Legia')
     assert points == '46'
     title = tvn_sport_page.get_title()
     assert title == 'Sport, Wyniki meczów, Wiadomości sportowe | Eurosport w TVN24'
