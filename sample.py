@@ -21,10 +21,6 @@ def test_check_amount_of_points_by_club_name(browser):
     tvn_sport_page = MainPage(browser, 'https://eurosport.tvn24.pl')
     tvn_sport_page.navigate_to()
     tvn_sport_page.click_on((By.XPATH, '//button[@id="onetrust-accept-btn-handler"]'), 360)
-    name = 'Legia'
-    selector = f"//td[contains(text(),'{name}')]/parent::tr/td[@class='points']"
-    # points = browser.find_element(By.XPATH, selector).text
-    # TODO:investigate base page methods
     points = tvn_sport_page.get_amount_of_points_by_club_name('Legia')
     assert points == '46'
     title = tvn_sport_page.get_title()
