@@ -34,3 +34,7 @@ class PageBase:
 
     def wait_until_visibility_of_element_located(self, locator):
         WebDriverWait(self.driver, timeout=5).until(EC.presence_of_element_located(locator))
+
+    def check_title(self, title):
+        assert self.get_title() == title
+        return self

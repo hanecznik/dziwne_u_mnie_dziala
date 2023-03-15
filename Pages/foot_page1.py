@@ -9,3 +9,5 @@ class FootballPage(PageBase):
         self.click_on((By.LINK_TEXT, "TVN METEO"), 60)
         self.driver.switch_to.window(self.driver.window_handles[-1])
         return MeteoPage(self.driver, self.base_url)
+
+
