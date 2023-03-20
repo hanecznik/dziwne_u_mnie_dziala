@@ -19,7 +19,6 @@ class MainPage(PageBase):
         return element.text
 
     def go_to_football_page(self):
-        pass
         self.click_on((By.XPATH, "//*[@title='Piłka nożna']"), 60)
         return FootballPage(self.driver, self.base_url)
 
