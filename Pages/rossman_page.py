@@ -16,8 +16,10 @@ class RossmanPage(PageBase):
         return self
 
     def check_sub_menu_items(self, item, menu_items):
+        xpath = f"//*[text()='{item}']/following-sibling::div//*[@class='mega-menu__categories']/div/a[text()]"
+        print(xpath)
         items = self.find_elements(
-            (By.XPATH, f"//*[text()='{item}']/following-sibling::div//*[@class='mega-menu__categories']/div/a[text()]"),
+            (By.XPATH, xpath),
             360)
         text = []
         for item in items:
@@ -25,3 +27,4 @@ class RossmanPage(PageBase):
         print(text)
         print(menu_items)
         assert text == menu_items
+        return self

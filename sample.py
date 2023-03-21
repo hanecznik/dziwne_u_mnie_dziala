@@ -51,6 +51,10 @@ def test_hebe_page_menu_items(browser):
 def test_rossman_page_menu(browser):
     items = ['Mycie i pielęgnacja', 'Artykuły higieniczne', 'Jedzenie dla dzieci', 'Akcesoria dla dzieci',
              'Ubranka dla dzieci', 'Zabawki', 'Kobieta w ciąży', 'Karta podarunkowa']
+    twarz_items = ['Oczyszczanie i demakijaż', 'Pielęgnacja twarzy', 'Pielęgnacja ust', 'Męska pielęgnacja twarzy',
+                   'Karta podarunkowa']
     RossmanPage.navigate(browser, 'https://rossmann.pl') \
         .click_menu_item('Mama i Dziecko') \
-        .check_sub_menu_items('Mama i Dziecko', items)
+        .check_sub_menu_items('Mama i Dziecko', items) \
+        .click_menu_item('Twarz') \
+        .check_sub_menu_items('Twarz', twarz_items)
