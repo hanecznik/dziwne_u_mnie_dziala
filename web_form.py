@@ -5,7 +5,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.select import Select
-from selenium.webdriver import ActionChains
 
 
 def test_web_form():
@@ -33,7 +32,6 @@ def test_web_form():
 
     browser.find_element(By.XPATH, "//input[@name='my-date']").send_keys('07/06/2023')
 
-    actions = ActionChains(browser)
     my_range = browser.find_element(By.XPATH, "//input[@name='my-range']")
     for i in range(10):
         my_range.send_keys(Keys.RIGHT)
