@@ -25,20 +25,19 @@ def test_web_form():
     dropdown_select = Select(browser.find_element(By.XPATH, "//select[@name='my-select']"))
     dropdown_select.select_by_index("3")
 
-    # TODO: (I need to check it once again!)
-    # dropdown_datalist = Select(browser.find_element(By.XPATH, "//input[@name='my-datalist']"))
-    # //input[@name='my-datalist']//following::datalist[contains(@value, "Los Angeles")] ??
-    # dropdown_datalist.select_by_visible_text("Los Angeles")
+    dropdown_datalist = Select(browser.find_element(By.XPATH, "//input[@name='my-datalist']//following::options[contains(@value, 'Los Angeles')]"))
+    dropdown_datalist.select_by_visible_text("Los Angeles")
 
     browser.find_element(By.ID, 'my-check-1').click()
 
     browser.find_element(By.XPATH, "//input[contains (@value, '#563d7c')]").click()
 
-    # TODO:
-    # browser.find_element(By.XPATH, "//input[@name='my-date']").click()
+    browser.find_element(By.XPATH, "//input[@name='my-date']").send_keys('07/06/2023')
 
     actions = ActionChains(browser)
     my_range = browser.find_element(By.XPATH, "//input[@name='my-range']")
-    actions.drag_and_drop_by_offset(my_range, 5, 10).perform()
+    for i in range(10):
+        my_range.send_keys(Keys.RIGHT)
+        time.sleep(1)
 
     browser.quit()
