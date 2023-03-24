@@ -25,8 +25,7 @@ def test_web_form():
     dropdown_select = Select(browser.find_element(By.XPATH, "//select[@name='my-select']"))
     dropdown_select.select_by_index("3")
 
-    dropdown_datalist = Select(browser.find_element(By.XPATH, "//input[@name='my-datalist']//following::options[contains(@value, 'Los Angeles')]"))
-    dropdown_datalist.select_by_visible_text("Los Angeles")
+    browser.find_element(By.XPATH, "//input[@name='my-datalist']").send_keys("Los Angeles")
 
     browser.find_element(By.ID, 'my-check-1').click()
 
@@ -39,5 +38,11 @@ def test_web_form():
     for i in range(10):
         my_range.send_keys(Keys.RIGHT)
         time.sleep(1)
+
+    browser.find_element(By.XPATH, "//button[@class='btn btn-outline-primary mt-3']").click()
+    form_submitted = browser.find_element(By.ID, 'message').text
+    assert form_submitted == "Received!"
+
+    browser.save_screenshot("done.png")
 
     browser.quit()
